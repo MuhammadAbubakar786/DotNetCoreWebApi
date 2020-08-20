@@ -33,7 +33,7 @@ namespace DotNetCoreWebApi.Controllers
             return Ok(student);
         }
         [HttpGet]
-        [Route("{Find}/{Name}")]
+        [Route("[action]/{Name}")]
         public IActionResult Find(string Name)
         {
             var student = _studentDataProvider.GetStudentByName(Name);
@@ -48,7 +48,7 @@ namespace DotNetCoreWebApi.Controllers
             if (existingStudent != null)
                 return BadRequest();
             
-            return Created("Get",_studentDataProvider.AddStudent(student));
+            return Created($"Students/{student.StudentId}",_studentDataProvider.AddStudent(student));
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int Id)
@@ -65,7 +65,7 @@ namespace DotNetCoreWebApi.Controllers
             var existingStudent = _studentDataProvider.GetStudentById(student.StudentId);
             if (existingStudent == null)
                 return NotFound();
-            return Created("Get", _studentDataProvider.EditStudent(student));
+            return Created($"Student/{student.StudentId}", _studentDataProvider.EditStudent(student));
           
         }
     }
