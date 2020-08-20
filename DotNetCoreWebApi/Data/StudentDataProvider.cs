@@ -9,11 +9,11 @@ namespace DotNetCoreWebApi.Data
 {
     public class StudentDataProvider
     {
-       public static List<Student> students = new List<Student>()
+        public static List<Student> Students = new List<Student>()
         {
-            new Student
+           new Student
             {
-                StudentId = 13541,
+                StudentId = 1,
                 Name = "AliHassan",
                 Address = "Sambriyal Sialkot",
                 Age = 22,
@@ -34,9 +34,9 @@ namespace DotNetCoreWebApi.Data
 
                 }
             },
-              new Student
+           new Student
               {
-                StudentId = 13545,
+                StudentId = 2,
                 Name = "AhmedHammad",
                 Address = "Gondal Sialkot",
                 Age = 22,
@@ -61,32 +61,61 @@ namespace DotNetCoreWebApi.Data
                         CreditHours = 2
                     }
                 }
+              },
+           new Student
+              {
+                StudentId = 3,
+                Name = "Armghan Latif",
+                Address = "Sambriyal Sialkot",
+                Age = 23,
+                Courses = new List<Course>
+                {
+                    new Course
+                    {
+                        CourseId = 10012,
+                         CourseName = "Object Oriented Programming",
+                         CreditHours = 3
+                    },
+                    new Course
+                    {
+                         CourseId = 10010,
+                         CourseName = "Android",
+                         CreditHours = 3
+                    },
+                    new Course
+                    {
+                        CourseId = 10011,
+                        CourseName = "Pak Study",
+                        CreditHours = 2
+                    }
+                }
               }
+
         };
 
         public void DeleteStudent(int Id)
         {
             var existingStudent = GetStudentById(Id);
-            students.Remove(existingStudent);
+            Students.Remove(existingStudent);
         }
 
         public IEnumerable<Student> GetStudents()
         {
-            return students;
+            return Students;
         }
         public Student GetStudentById(int Id)
         {
-            var student = students.Find(d => d.StudentId == Id);
+            var student = Students.Find(d => d.StudentId == Id);
             return student;
         }
         public Student GetStudentByName(string Name)
         {
-            var student = students.Find(d => d.Name == Name);
+            var student = Students.Find(d => d.Name == Name);
             return student;
         }
         public Student AddStudent(Student student)
         {
-            students.Add(student);
+            Students.Add(student);
             return student;
         }
         public Student EditStudent(Student student)
