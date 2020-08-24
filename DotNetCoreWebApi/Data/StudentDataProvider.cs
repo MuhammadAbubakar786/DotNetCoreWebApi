@@ -90,7 +90,6 @@ namespace DotNetCoreWebApi.Data
                     }
                 }
               }
-
         };
 
         public void DeleteStudent(int Id)
@@ -98,7 +97,6 @@ namespace DotNetCoreWebApi.Data
             var existingStudent = GetStudentById(Id);
             Students.Remove(existingStudent);
         }
-
         public IEnumerable<Student> GetStudents()
         {
             return Students;
